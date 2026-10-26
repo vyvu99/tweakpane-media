@@ -1,6 +1,6 @@
 {
 	"name": "tweakpane-media",
-	"version": "0.1.6",
+	"version": "1.0.0",
 	"description": "Image and video inputs for Tweakpane 4",
 	"type": "module",
 	"license": "MIT",
