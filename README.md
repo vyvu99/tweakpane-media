@@ -6,7 +6,6 @@
 Click or drop a file, get a URL back.
 
 [![npm](https://img.shields.io/npm/v/tweakpane-media)](https://www.npmjs.com/package/tweakpane-media)
-[![CI](https://github.com/vyvu99/tweakpane-media/actions/workflows/ci.yml/badge.svg)](https://github.com/vyvu99/tweakpane-media/actions/workflows/ci.yml)
 [![size](https://img.shields.io/bundlephobia/minzip/tweakpane-media)](https://bundlephobia.com/package/tweakpane-media)
 [![license](https://img.shields.io/npm/l/tweakpane-media)](./LICENSE)
 
@@ -135,7 +134,7 @@ pnpm build
 pnpm example  # demo page
 ```
 
-Add a changeset to your PR with `pnpm changeset`. Merging to `main` opens a "Version Packages" PR; merging that publishes to npm.
+Add a changeset to your PR with `pnpm changeset`. To release, run `pnpm changeset version`, commit, then `pnpm release` (it runs check, test and build before publishing).
 
 ## License
 

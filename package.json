@@ -44,7 +44,7 @@
 		"fix": "biome check --write .",
 		"test": "vitest run --maxWorkers=2",
 		"changeset": "changeset",
-		"release": "pnpm build && changeset publish",
+		"release": "pnpm check && pnpm test && pnpm build && changeset publish",
 		"example": "vite examples"
 	},
 	"devDependencies": {
