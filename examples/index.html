@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>tweakpane-media example</title>
+	</head>
+	<body>
+		<script type="module">
+			import {Pane} from 'tweakpane';
+			import {TweakpaneMedia} from '../src/index.ts';
+
+			const pane = new Pane({title: 'tweakpane-media'});
+			pane.registerPlugin(TweakpaneMedia);
+
+			const params = {
+				image: './image.png',
+				video: './video.mp4',
+				toggled: {src: './image.png', checked: false},
+			};
+
+			pane.addBinding(params, 'image', {view: 'image', label: 'Image', width: 100});
+			pane.addBinding(params, 'video', {
+				view: 'video',
+				label: 'Video',
+				width: 100,
+				height: 60,
+				fit: 'cover',
+			});
+			pane.addBinding(params, 'toggled', {
+				view: 'image',
+				label: 'Toggle',
+				checkbox: true,
+				width: 100,
+			});
+			pane.on('change', (ev) => console.log(ev.target.label, ev.value));
+		</script>
+	</body>
+</html>
