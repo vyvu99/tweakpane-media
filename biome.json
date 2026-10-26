@@ -3,6 +3,14 @@
 	"vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
 	"formatter": { "indentStyle": "tab", "lineWidth": 90 },
 	"javascript": { "formatter": { "quoteStyle": "single", "bracketSpacing": false } },
-	"linter": { "rules": { "preset": "none" } },
-	"files": { "includes": ["**", "!pnpm-lock.yaml", "!examples/*.mp4", "!.changeset", "!CHANGELOG.md"] }
+	"linter": { "rules": { "preset": "recommended" } },
+	"files": {
+		"includes": [
+			"**",
+			"!pnpm-lock.yaml",
+			"!examples/*.mp4",
+			"!.changeset",
+			"!CHANGELOG.md"
+		]
+	}
 }
