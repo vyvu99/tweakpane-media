@@ -1,67 +1,66 @@
 {
 	"name": "tweakpane-media",
-	"version": "0.1.0",
-	"description": "Add image/video to Tweakpane",
-	"main": "dist/tweakpane-media.min.js",
-	"types": "dist/types/index.d.ts",
-	"author": "vyvu",
+	"version": "0.1.6",
+	"description": "Image and video inputs for Tweakpane 4",
+	"type": "module",
 	"license": "MIT",
+	"author": "vyvu",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vyvu99/tweakpane-media.git"
+	},
+	"keywords": [
+		"tweakpane",
+		"tweakpane-plugin",
+		"image",
+		"video",
+		"media",
+		"drag-drop",
+		"threejs"
+	],
+	"sideEffects": false,
+	"main": "./dist/tweakpane-media.js",
+	"module": "./dist/tweakpane-media.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/tweakpane-media.js"
+		}
+	},
 	"files": [
 		"dist"
 	],
-	"keywords": [
-		"tweakpane",
-		"plugin",
-		"media",
-		"video",
-		"image",
-		"tweakpane threejs",
-		"drag",
-		"drop",
-		"customizable",
-		"support threejs"
-	],
+	"packageManager": "pnpm@10.33.2",
+	"engines": {
+		"node": ">=20"
+	},
+	"peerDependencies": {
+		"tweakpane": "^4.0.0"
+	},
 	"scripts": {
-		"prepare": "run-s clean build",
-		"prepublishOnly": "npm test",
-		"start": "npm run watch",
-		"test": "eslint --ext .ts \"src/**/*.ts\"",
-		"assets": "run-s clean build assets:version assets:zip",
-		"assets:version": "node scripts/assets-append-version.mjs",
-		"assets:zip": "zip -x \"*types*\" -j -r $(cat package.json | npx json name)-$(cat package.json | npx json version).zip dist",
-		"clean": "rimraf --glob dist *.tgz *.zip",
-		"build": "run-p build:*",
-		"build:dts": "tsc --project src/tsconfig-dts.json",
-		"build:prod": "rollup --config rollup.config.mjs --environment BUILD:production",
-		"format": "run-p format:*",
-		"format:scss": "prettier --parser scss --write \"src/sass/**/*.scss\"",
-		"format:ts": "eslint --ext .ts --fix \"src/**/*.ts\"",
-		"watch": "onchange --initial --kill \"src/sass/**/*.scss\" --kill \"src/**/*.ts\" -- npm run build:prod"
+		"build": "vite build && tsc -p tsconfig.build.json",
+		"check": "biome check . && tsc --noEmit",
+		"fix": "biome check --write .",
+		"test": "vitest run --maxWorkers=2",
+		"changeset": "changeset",
+		"release": "pnpm build && changeset publish",
+		"example": "vite examples"
 	},
 	"devDependencies": {
-		"@rollup/plugin-alias": "^4.0.3",
-		"@rollup/plugin-node-resolve": "^15.0.1",
-		"@rollup/plugin-replace": "^5.0.2",
-		"@rollup/plugin-terser": "^0.4.0",
-		"@rollup/plugin-typescript": "^11.0.0",
-		"@tweakpane/core": "^1.1.5",
-		"@typescript-eslint/eslint-plugin": "^5.54.1",
-		"@typescript-eslint/parser": "^5.54.1",
-		"autoprefixer": "^10.4.14",
-		"eslint": "^8.36.0",
-		"eslint-config-prettier": "^8.7.0",
-		"eslint-plugin-prettier": "^4.2.1",
-		"eslint-plugin-simple-import-sort": "^10.0.0",
-		"npm-run-all": "^4.1.5",
-		"onchange": "^7.1.0",
-		"postcss": "^8.4.21",
-		"prettier": "^2.8.4",
-		"rimraf": "^4.4.0",
-		"rollup": "^3.19.1",
-		"rollup-obfuscator": "^3.0.2",
-		"rollup-plugin-cleanup": "^3.2.1",
-		"sass": "^1.59.2",
-		"tweakpane": "^3.1.6",
-		"typescript": "^4.9.5"
+		"@biomejs/biome": "^2.6.3",
+		"@changesets/cli": "^3.0.3",
+		"jsdom": "^30.1.3",
+		"tweakpane": "^4.0.5",
+		"typescript": "^7.0.2",
+		"vite": "^8.3.5",
+		"vitest": "^5.0.5"
+	},
+	"dependencies": {
+		"@tweakpane/core": "^2.0.5"
+	},
+	"homepage": "https://github.com/vyvu99/tweakpane-media#readme",
+	"bugs": {
+		"url": "https://github.com/vyvu99/tweakpane-media/issues"
 	}
 }
